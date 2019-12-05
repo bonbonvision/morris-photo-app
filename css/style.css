@@ -1,0 +1,46 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 20px 0;
+  line-height: 1.1;
+  text-align: center;
+}
+
+h1 {
+  color: #222;
+  font-size: 2em;
+  margin: 0.5em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #494949;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+/* p {
+      margin: 0 auto;
+      width: 280px;
+  } */
+
+@media only screen and (max-width: 600px) {
+
+
+  h1 {
+    font-size: 1.7em;
+  }
+
+}
