@@ -63,6 +63,18 @@
                 </label>
                 <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
               </form>
+
+
+              <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+<p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+<p><img id="output" width="200" /></p>
+
+<script>
+    var loadFile = function(event) {
+      var image = document.getElementById('output');
+      image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    </script>
             <!-- <div class="upload-btn-wrapper">
                 <button class="btn"><img src="img\camera.png" height="35"></button>
                 <input type="file" accept="image/*" id="file-input">
