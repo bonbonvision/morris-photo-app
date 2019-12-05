@@ -4,7 +4,12 @@ html, body{
   height: 100%;
   width: 100%;
 }
-
+main {
+  margin: 15px auto;
+  padding: 0 15px;
+  text-align: center;
+  /* max-width: 500px; */
+}
 h1,
 h2,
 h3 {
@@ -14,11 +19,11 @@ h3 {
 }
 
 h1 {
-  color: #222;
   font-size: 2em;
   margin: 0.5em;
 }
 
+h1,
 h2,
 h3,
 h4,
@@ -28,19 +33,40 @@ h6 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
-/* p {
-      margin: 0 auto;
-      width: 280px;
-  } */
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .btn {
+    border: 1px solid #d3d3d3;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
 
 @media only screen and (max-width: 600px) {
 
 
   h1 {
-    font-size: 1.7em;
+    font-size: 1.5em;
   }
 
 }

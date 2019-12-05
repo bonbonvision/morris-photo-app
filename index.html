@@ -11,77 +11,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Hello, world!</title>
-  <style>
-    /* * {
-          line-height: 1.2;
-          margin: 0;
-      } */
-
-    /* html {
-      color: #888;
-      display: table;
-      font-family: 'Lato', sans-serif;
-      height: 100%;
-      text-align: center;
-      width: 100%;
-    }
-
-    body {
-      min-height: 100%;
-      margin: 0;
-      padding: 0;
-      color: #777;
-    }
-
-    main {
-      margin: 15px auto;
-      padding: 0 15px;
-      text-align: center;
-      max-width: 500px;
-    } */
-
-    h1,
-    h2,
-    h3 {
-      margin: 20px 0;
-      line-height: 1.1;
-      text-align: center;
-    }
-
-    h1 {
-      color: #222;
-      font-size: 2em;
-      margin: 0.5em;
-    }
-
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: #494949;
-    }
-
-    h2 {
-      font-size: 1.2em;
-    }
-
-    /* p {
-          margin: 0 auto;
-          width: 280px;
-      } */
-
-    @media only screen and (max-width: 600px) {
-
-
-      h1 {
-        font-size: 1.7em;
-      }
-
-    }
-  </style>
 </head>
 
 <body>
@@ -100,19 +31,22 @@
     <section id="orderDetails">
       <div class="container">
         <div class="row">
-          <h2>1. Enter Tracking Number</h2>
+          <h2>Enter Tracking Number</h2>
         </div>
         <div class="row">
-          <p>Instructions...</p>
+            <button class="btn btn-default" type="button"><img src="img\barcode.png" height="35"></button>
         </div>
         <div class="row">
-          <div class="input-group input-group-lg mb-3">
-            <input type="text" class="form-control" placeholder="Tracking Number" aria-label="Tracking Number"
-              aria-describedby="basic-addon">
-            <div class="input-group-append">
-              <button class="btn btn-default" type="button"><img src="img\barcode.png" height="35"></button>
-            </div>
-          </div>
+            <div class="input-group input-group-lg mb-3">
+                <input type="text" class="form-control" placeholder="Tracking Number" aria-label="Tracking Number"
+                  >
+                <!-- <div class="input-group-append">
+                  <button class="btn btn-default" type="button"><img src="img\barcode.png" height="35"></button>
+                </div> -->
+              </div>
+
+        </div>
+
         </div>
       </div>
     </section>
@@ -120,14 +54,15 @@
     <section id="orderPhotos">
       <div class="container">
         <div class="row">
-          <h2>2. Add Photos</h2>
+          <h2>Add Photos</h2>
         </div>
         <div class="row">
-          <p>Instructions...</p>
-        </div>
-        <div class="row">
-            <input type="file" accept="image/*" id="file-input">
-
+            <div class="upload-btn-wrapper">
+                <button class="btn"><img src="img\camera.png" height="35"></button>
+                <input type="file" accept="image/*" id="file-input">
+              </div>
+            
+              <input type="file" accept="image/*" id="file-input">
         </div>
       </div>
     </section>
