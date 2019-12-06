@@ -42,12 +42,6 @@ h2 {
   font-weight: 400;
 }
 
-  .upload-btn-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-  }
-  
   .btn {
     border: 1px solid #d3d3d3;
     color: gray;
@@ -57,19 +51,58 @@ h2 {
     font-weight: bold;
   }
   
-  .upload-btn-wrapper input[type=file] {
-    font-size: 100px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
+  .product-photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: auto;
+    align-content: start;
+  }
+  .single-photo {
+    flex: 0 0 auto;
+    margin: 10px;
+    border: 1px solid #d3d3d3;
+    height: 150px;
+    width: 150px
   }
 
-  .image-file-upload {
-    border: 1px solid #ccc;
+  .single-photo-wrapper {
+    width: 150px;
+    height: 150px;
+    background-color: aqua;
+    background-image: url('/img/camera.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    position: relative;
+  }
+
+  .photo-upload {
+    border: 1px solid pink;
     display: inline-block;
-    padding: 6px 12px;
     cursor: pointer;
+    height: 150px;
+    width: 150px
+  }
+
+  img.output-photo {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+  }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: auto;
+  align-content: start;
+}
+  .gallery img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    margin: 10px;
   }
 
 @media only screen and (max-width: 600px) {
@@ -78,5 +111,20 @@ h2 {
   h1 {
     font-size: 1.5em;
   }
+
+  /* .photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: auto;
+    align-content: start;
+  } */
+  /* .single-photo:nth-child(odd) {
+    margin-left: 0;
+  }
+  .single-photo:nth-child(even) {
+    margin-left: 0;
+  } */
 
 }

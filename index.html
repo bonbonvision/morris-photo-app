@@ -29,62 +29,68 @@
   </header>
   <main>
     <section id="orderDetails">
-      <div class="container">
-        <div class="row">
-          <h2>Enter Tracking Number</h2>
-        </div>
-        <div class="row">
-            <button class="btn btn-default" type="button"><img src="img\barcode.png" height="35"></button>
-        </div>
-        <div class="row">
-            <div class="input-group input-group-lg mb-3">
-                <input type="text" class="form-control" placeholder="Tracking Number" aria-label="Tracking Number"
-                  >
-                <!-- <div class="input-group-append">
+      <div class="section-title">
+        <h2>Enter Tracking Number</h2>
+      </div>
+      <div class="od-scan-btn">
+        <button class="btn btn-default" type="button"><img src="img\barcode.png" height="35"></button>
+      </div>
+      <div class="od-input">
+        <div class="input-group input-group-lg mb-3">
+          <input type="text" class="form-control" placeholder="Tracking Number" aria-label="Tracking Number">
+          <!-- <div class="input-group-append">
                   <button class="btn btn-default" type="button"><img src="img\barcode.png" height="35"></button>
                 </div> -->
-              </div>
-
         </div>
 
-        </div>
+      </div>
+
       </div>
     </section>
 
-    <section id="orderPhotos">
-      <div class="container">
-        <div class="row">
-          <h2>Add Photos</h2>
-        </div>
-        <div class="row">
-            <form>
-                <label for="file-upload" class="image-file-upload">
-                    <img src="img\camera.png" height="35"><br>Add Photo
-                </label>
-                <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
-              </form>
+    <section id="productPhotos">
 
-
-              <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-<p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-<p><img id="output" width="200" /></p>
-
-<script>
-    var loadFile = function(event) {
-      var image = document.getElementById('output');
-      image.src = URL.createObjectURL(event.target.files[0]);
-    };
-    </script>
-            <!-- <div class="upload-btn-wrapper">
-                <button class="btn"><img src="img\camera.png" height="35"></button>
-                <input type="file" accept="image/*" id="file-input">
-              </div>
-            
-              <input type="file" accept="image/*" id="file-input"> -->
-        </div>
+      <div class="section-title">
+        <h2>Add Photos</h2>
       </div>
+
+      <div class="product-photo-grid">
+        <div class="single-photo">
+          <div class="single-photo-wrapper">
+            <input id="productPhoto1" name='upload_cont_img' type="file" accept="image/*" onchange="loadFile(event)"
+              style="display:none;">
+            <label for="productPhoto1" class="photo-upload" style="cursor: pointer;">
+              <img id="outputPhoto1" class="output-photo" />
+            </label>
+          </div>
+        </div>
+        <div class="single-photo"></div>
+        <div class="single-photo"></div>
+        <div class="single-photo"></div>
+      </div>
+
+      <!-- 2nd test -->
+      <div>
+        <input type="file" multiple id="gallery-photo-add">
+        <div class="gallery"></div>
+      </div>
+
+      <!-- 3rd test -->
+      <input type="file" id="fileElem" multiple accept="image/*" style="display:none"
+        onchange="handleFiles(this.files)">
+      <a href="#" id="fileSelect">Select some files</a>
+      <div id="fileList">
+        <p>No files selected!</p>
+      </div>
+
+      <!-- 4th test -->
+      <!-- <input type="file" id="fileElem" multiple accept="image/*" style="display:none"
+        onchange="handleFiles(this.files)">
+      <button id="fileSelect">Select some files</button>
+      <div class="preview"></div> -->
+
+
     </section>
-    <section></section>
   </main>
   <footer></footer>
 
