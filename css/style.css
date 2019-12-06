@@ -9,22 +9,28 @@ html, body{
   width: 100%;
 }
 main {
-  margin: 15px auto;
-  padding: 0 15px;
   text-align: center;
-  /* max-width: 500px; */
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 500px;
+}
+section {
+  padding: 15px 0;
 }
 h1,
 h2,
 h3 {
-  margin: 20px 0;
+  margin-bottom: 20px;
   line-height: 1.1;
   text-align: center;
 }
 
 h1 {
   font-size: 2em;
-  margin: 0.5em;
+  margin-top: 20px;
 }
 
 h1,
@@ -43,53 +49,15 @@ h2 {
 }
 
   .btn {
-    border: 1px solid #d3d3d3;
-    color: gray;
-    background-color: white;
-    padding: 8px 20px;
     font-size: 20px;
-    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
   }
   
-  .product-photo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: auto;
-    align-content: start;
+  #productPhotos {
+    min-height: 300px;;
   }
-  .single-photo {
-    flex: 0 0 auto;
-    margin: 10px;
-    border: 1px solid #d3d3d3;
-    height: 150px;
-    width: 150px
-  }
-
-  .single-photo-wrapper {
-    width: 150px;
-    height: 150px;
-    background-color: aqua;
-    background-image: url('/img/camera.png');
-    background-repeat: no-repeat;
-    background-position: center; 
-    position: relative;
-  }
-
-  .photo-upload {
-    border: 1px solid pink;
-    display: inline-block;
-    cursor: pointer;
-    height: 150px;
-    width: 150px
-  }
-
-  img.output-photo {
-    height: 150px;
-    width: 150px;
-    object-fit: cover;
-  }
+ 
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -112,19 +80,5 @@ h2 {
     font-size: 1.5em;
   }
 
-  /* .photo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: auto;
-    align-content: start;
-  } */
-  /* .single-photo:nth-child(odd) {
-    margin-left: 0;
-  }
-  .single-photo:nth-child(even) {
-    margin-left: 0;
-  } */
 
 }
