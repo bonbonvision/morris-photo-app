@@ -18,7 +18,7 @@
 <body>
   <header>
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1">Morris Costumes</span>
+      <span class="navbar-brand mb-0 h1">MORRIS COSTUMES</span>
       <span class="navbar-text">
         <a href="#">Logout</a>
       </span>
@@ -32,12 +32,11 @@
       <div class="section-title">
         <h2>Enter Tracking Number</h2>
       </div>
-        <button class="btn btn-default" type="button"><img src="img\barcode.png" height="35"></button>
-      <div class="od-input">
+        <button class="btn  btn-outline-info btn-sm" type="button" data-toggle="modal" data-target="#livestream_scanner"><img src="img\barcode.png" height="25"><br>Scan</button>
+
         <div class="input-group input-group-lg mb-3">
-          <input type="text" class="form-control" placeholder="Tracking Number" aria-label="Tracking Number">
+          <input id="scanner_input" type="text" class="form-control" placeholder="Tracking Number" aria-label="Tracking Number">
         </div>
-      </div>
     </section>
 
     <section id="productPhotos">
@@ -47,12 +46,12 @@
 
       <div>
         <input id="gallery-photo-add" type="file" multiple accept="image/*" style="display:none">
-        <button id="photo-select" class="btn btn-default" type="button"><img src="img\camera.png" height="35"></button>
+        <button id="photo-select" class="btn btn-outline-info btn-sm" type="button"><img src="img\camera.png" height="25"><br>Add Photo</button>
         <div class="gallery"></div>
       </div>
     </section>
 
-    <button class="btn btn-info btn-lg">
+    <button class="btn btn-info btn-lg sticky-bottom">
       Upload
     </button>
   </main>
@@ -72,6 +71,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 
