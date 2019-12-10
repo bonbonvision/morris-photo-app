@@ -28,3 +28,6 @@ $(function () {
     imagesPreview(this, 'div.gallery');
   });
 });
+
+// Scan barcode
+
