@@ -43,10 +43,10 @@ var App = {
             .fromSource(file, {size: 800})
             .toPromise()
             .then(function(result) {
-                document.querySelector('input.isbn').value = result.codeResult.code;
+                document.querySelector('input.scanner').value = result.codeResult.code;
             })
             .catch(function() {
-                document.querySelector('input.isbn').value = "Not Found";
+                document.querySelector('input.scanner').value = "Not Found";
             })
             .then(function() {
                 this.attachListeners();
@@ -54,7 +54,7 @@ var App = {
     },
     attachListeners: function() {
         var self = this,
-            button = document.querySelector('.input-field input + .button.scan'),
+            button = document.querySelector('.input-field .button.scan'),
             fileInput = document.querySelector('.input-field input[type=file]');
         button.addEventListener("click", function onClick(e) {
             e.preventDefault();
