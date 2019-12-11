@@ -84,11 +84,13 @@ h2 {
     margin: 10px;
   }
 
-  canvas.drawing, canvas.drawingBuffer {
-    position: absolute;
-    left: 0;
-    top: 0;
+  input[type=file] {
+    display: none;
 }
+/* .input-field input {
+    flex: 1 1 auto;
+    height: 20px;
+} */
 
 @media only screen and (max-width: 600px) {
 
