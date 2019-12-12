@@ -1,0 +1,28 @@
+{
+  "name": "morris-photo-app",
+  "version": "1.0.0",
+  "description": "Photo web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonbonvision/morris-photo-app.git"
+  },
+  "author": "Bonnie Kilpatrick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bonbonvision/morris-photo-app/issues"
+  },
+  "homepage": "https://github.com/bonbonvision/morris-photo-app#readme",
+  "dependencies": {
+    "ansi-colors": "^1.1.0",
+    "ansi-gray": "^0.1.1",
+    "ansi-wrap": "^0.1.0",
+    "ansi-regex": "^2.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
