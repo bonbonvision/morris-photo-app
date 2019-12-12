@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">MORRIS COSTUMES</span>
+      <span class="navbar-text">
+        <a href="#">Logout</a>
+      </span>
+    </nav>
+    <div class="page-header">
+      <h1>Bad Stock Product Photos</h1>
+    </div>
+  </header>
+  <main>
+    <section id="orderDetails">
+      <div class="section-title">
+        <h2>Enter Tracking Number</h2>
+      </div>
+      <form>
+        <div class="input-field">
+          <button class="btn btn-outline-info btn-sm button scan" type="button"><img src="img\barcode.png"
+              height="25"><br>Scan</button>
+          <input id="trackingInput" type="text" class="scanner form-control" placeholder="Tracking Number"
+            aria-label="Tracking Number">
+          <input type="file" id="file" capture />
+        </div>
+      </form>
+
+
+      <!-- Test scanner div -->
+      <!-- <form>
+            <div class="input-group mb-3">
+                <input id="isbn_input" type="text" class="isbn form-control" placeholder="Tracking Number" aria-label="Tracking Number" aria-describedby="basic-addon">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-info button scan" type="button">Scan</button>
+                </div>
+                <input type="file" id="file" capture/>
+              </div>
+        </form> -->
+
+      <!-- <form>
+        <div class="input-field">
+          <input id="isbn_input" class="isbn form-control" type="text" />
+          <button type="button" class="icon-barcode button scan">&nbsp;</button>
+          <input type="file" id="file" capture />
+        </div>
+      </form> -->
+
+      <!-- Test scanner div end-->
+
+    </section>
+
+    <section id="productPhotos">
+      <div class="section-title">
+        <h2>Upload Photos</h2>
+      </div>
+
+      <div>
+        <input id="gallery-photo-add" type="file" multiple accept="image/*" style="display:none">
+        <button id="photo-select" class="btn btn-outline-info btn-sm" type="button"><img src="img\camera.png"
+            height="25"><br>Add Photo</button>
+        <div class="gallery"></div>
+      </div>
+    </section>
+
+    <button class="btn btn-info btn-lg sticky-bottom">
+      Upload
+    </button>
+  </main>
+  <footer></footer>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/1.0.0-beta.1/quagga.js"
+    integrity="sha256-tZb22+HHPyeR59ZqbnWz8uYzPfATymUf0TGEstTg300=" crossorigin="anonymous"></script>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

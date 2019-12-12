@@ -1,6 +1,8 @@
+var gulp = require('gulp');
+
 function defaultTask(cb) {
-  // place code for your default task here
-  cb();
+  return gulp.src('src/**')
+      .pipe(gulp.dest('public/'));
 }
 
 exports.default = defaultTask
