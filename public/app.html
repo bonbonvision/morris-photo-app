@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Morris Photo App</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Firebase JS -->
+  <script src="/__/firebase/7.6.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.6.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.6.0/firebase-storage.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">MORRIS COSTUMES</span>
+      <span class="navbar-text">
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign Out</button>
+        <!-- <a href="#">Logout</a> -->
+      </span>
+    </nav>
+    <div class="page-header">
+      <h1>Bad Stock Product Photos</h1>
+    </div>
+  </header>
+  <main>
+    <form>
+
+      <!-- Get Image Folder Name and Barcode Scanner Start -->
+      <section>
+
+        <h2>Enter Tracking Number</h2>
+
+        <div id="getFolderName">
+          <button id="scannerBtn" class="btn btn-outline-info btn-sm" type="button"><img src="img\barcode.png"
+              height="25"><br>Scan</button>
+          <input id="folderNameInput" type="text" class="form-control" placeholder="Tracking Number"
+            aria-label="Tracking Number">
+          <input type="file" id="scannerFile" capture />
+        </div>
+        <!-- <input type="file" onchange="uploadFile()" id="files" name="files[]" multiple /> -->
+
+      </section>
+
+      <section>
+
+        <h2>Upload Photos</h2>
+
+        <div class="getImgFiles">
+          <input id="imgFileInput" type="file" multiple accept="image/*" style="display:none">
+          <button id="addImgBtn" class="btn btn-outline-info btn-sm" type="button"><img src="img\camera.png"
+              height="25"><br>Add Photo</button>
+          <div class="img-gallery"></div>
+        </div>
+
+      </section>
+
+      <button type="submit" id="uploadBtn" class="btn btn-info btn-lg">
+        Upload
+      </button>
+    </form>
+
+  </main>
+  <footer></footer>
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/1.0.0-beta.1/quagga.js"
+    integrity="sha256-tZb22+HHPyeR59ZqbnWz8uYzPfATymUf0TGEstTg300=" crossorigin="anonymous"></script>
+
+  <!-- <script src="js/main.js"></script> -->
+
+  <script>
+    // Declare Variables
+    var auth = firebase.auth();
+    var storageRef = firebase.storage().ref();
+    var folderName = document.getElementById('folderNameInput')
+    var addImgBtn = document.getElementById('addImgBtn');
+    var imgFileInput = document.getElementById("imgFileInput");
+    var uploadBtn = document.getElementById('uploadBtn');
+
+    // Get image folder name and barcode scanner
+    var Quagga = window.Quagga;
+    var App = {
+      _scanner: null,
+      init: function () {
+        this.attachListeners();
+      },
+      decode: function (file) {
+        Quagga
+          .decoder({
+            readers: ['code_128_reader']
+          })
+          .locator({
+            patchSize: 'medium'
+          })
+          .fromSource(file, {
+            size: 800
+          })
+          .toPromise()
+          .then(function (result) {
+            folderName.value = result.codeResult.code;
+          })
+          .catch(function () {
+            folderName.value = "Not Found";
+          })
+          .then(function () {
+            this.attachListeners();
+          }.bind(this));
+      },
+      attachListeners: function () {
+        var self = this,
+          scannerBtn = document.querySelector('#scannerBtn'),
+          scannerFile = document.querySelector('#scannerFile');
+        scannerBtn.addEventListener("click", function onClick(e) {
+          e.preventDefault();
+          scannerBtn.removeEventListener("click", onClick);
+          document.querySelector('#scannerFile').click();
+        });
+        scannerFile.addEventListener("change", function onChange(e) {
+          e.preventDefault();
+          scannerFile.removeEventListener("change", onChange);
+          if (e.target.files && e.target.files.length) {
+            self.decode(e.target.files[0]);
+          }
+        });
+      }
+    };
+    App.init();
+
+    // Connect the add image button with the image input to select & preview multiple images
+    addImgBtn.addEventListener("click", function (e) {
+      if (imgFileInput) {
+        imgFileInput.click();
+      }
+    }, false);
+
+    $(function () {
+      var imgPreview = function (input, placeToInsertImgPreview) {
+
+        if (input.files) {
+          var filesAmount = input.files.length;
+          for (i = 0; i < filesAmount; i++) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+              $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImgPreview);
+            }
+            reader.readAsDataURL(input.files[i]);
+            var t = Date.now();
+            var fileName = t + input.files[i].name
+            //dynamically set reference to the file name
+            var thisRef = storageRef.child(folderName.value + '/' + fileName);
+            //put request upload file to firebase storage
+            thisRef.put(input.files[i]);
+          }
+        }
+      };
+
+      $('#imgFileInput').on('change', function () {
+        imgPreview(this, 'div.img-gallery');
+      });
+    });
+
+
+
+    uploadBtn.addEventListener('click', function (event) {
+      alert('Your images were uploaded!');
+    });
+  </script>
+
+</body>
+
+</html>

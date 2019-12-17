@@ -62,11 +62,11 @@ h2 {
     min-width: 160px;
     min-height: 50px;
   }
-  #productPhotos {
+  #getImgFIles {
     min-height: 300px;
   }
  
-.gallery {
+.img-gallery {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -77,7 +77,7 @@ h2 {
   min-height: 170px;
   margin-bottom: 5px;
 }
-  .gallery img {
+  .img-gallery img {
     height: 150px;
     width: 150px;
     object-fit: cover;
@@ -86,7 +86,7 @@ h2 {
 
   input[type=file] {
     display: none;
-}
+} 
 /* .input-field input {
     flex: 1 1 auto;
     height: 20px;

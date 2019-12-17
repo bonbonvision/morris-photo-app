@@ -1,26 +1,93 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <title>Morris Photo App</title>
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/style.css">
-  <title>Hello, world!</title>
+
+    <!-- Firebase JS -->
+    <script src="/__/firebase/7.6.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.6.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.6.0/firebase-database.js"></script>
+    <script src="/__/firebase/7.6.0/firebase-storage.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  
+
+
+<script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        callbacks: {
+          signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+            var user = authResult.user;
+            var credential = authResult.credential;
+            var isNewUser = authResult.additionalUserInfo.isNewUser;
+            var providerId = authResult.additionalUserInfo.providerId;
+            var operationType = authResult.operationType;
+            // Do something with the returned AuthResult.
+            // Return type determines whether we continue the redirect automatically
+            // or whether we leave that to developer to handle.
+            return true;
+          },
+          signInFailure: function(error) {
+            // Some unrecoverable error occurred during sign-in.
+            // Return a promise when error handling is completed and FirebaseUI
+            // will reset, clearing any UI. This commonly occurs for error code
+            // 'firebaseui/anonymous-upgrade-merge-conflict' when merge conflict
+            // occurs. Check below for more details on this.
+            return handleUIError(error);
+          },
+          uiShown: function() {
+            // The widget is rendered.
+            // Hide the loader.
+            document.getElementById('loader').style.display = 'none';
+          }
+        },
+        credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
+        // Query parameter name for mode.
+        queryParameterForWidgetMode: 'mode',
+        // Query parameter name for sign in success url.
+        queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
+        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+        signInSuccessUrl: 'app.html',
+        signInOptions: [
+          {
+            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            // Whether the display name should be displayed in the Sign Up page.
+            requireDisplayName: false
+          }
+        ],
+
+      };
+
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+</script>
+
 </head>
 
 <body>
+
   <header>
     <nav class="navbar navbar-light bg-light">
       <span class="navbar-brand mb-0 h1">MORRIS COSTUMES</span>
       <span class="navbar-text">
-        <a href="#">Logout</a>
+        <!-- <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in</button> -->
+        <!-- <a href="#">Logout</a> -->
       </span>
     </nav>
     <div class="page-header">
@@ -28,65 +95,11 @@
     </div>
   </header>
   <main>
-    <section id="orderDetails">
-      <div class="section-title">
-        <h2>Enter Tracking Number</h2>
-      </div>
-      <form>
-        <div class="input-field">
-          <button class="btn btn-outline-info btn-sm button scan" type="button"><img src="img\barcode.png"
-              height="25"><br>Scan</button>
-          <input id="trackingInput" type="text" class="scanner form-control" placeholder="Tracking Number"
-            aria-label="Tracking Number">
-          <input type="file" id="file" capture />
-        </div>
-      </form>
-
-
-      <!-- Test scanner div -->
-      <!-- <form>
-            <div class="input-group mb-3">
-                <input id="isbn_input" type="text" class="isbn form-control" placeholder="Tracking Number" aria-label="Tracking Number" aria-describedby="basic-addon">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-info button scan" type="button">Scan</button>
-                </div>
-                <input type="file" id="file" capture/>
-              </div>
-        </form> -->
-
-      <!-- <form>
-        <div class="input-field">
-          <input id="isbn_input" class="isbn form-control" type="text" />
-          <button type="button" class="icon-barcode button scan">&nbsp;</button>
-          <input type="file" id="file" capture />
-        </div>
-      </form> -->
-
-      <!-- Test scanner div end-->
-
-    </section>
-
-    <section id="productPhotos">
-      <div class="section-title">
-        <h2>Upload Photos</h2>
-      </div>
-
-      <div>
-        <input id="gallery-photo-add" type="file" multiple accept="image/*" style="display:none">
-        <button id="photo-select" class="btn btn-outline-info btn-sm" type="button"><img src="img\camera.png"
-            height="25"><br>Add Photo</button>
-        <div class="gallery"></div>
-      </div>
-    </section>
-
-    <button class="btn btn-info btn-lg sticky-bottom">
-      Upload
-    </button>
+    <div id="firebaseui-auth-container"></div>
   </main>
   <footer></footer>
 
 
-  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -101,6 +114,7 @@
     integrity="sha256-tZb22+HHPyeR59ZqbnWz8uYzPfATymUf0TGEstTg300=" crossorigin="anonymous"></script>
 
   <script src="js/main.js"></script>
+
 </body>
 
 </html>

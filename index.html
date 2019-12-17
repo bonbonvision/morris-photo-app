@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
   <!-- Required meta tags -->
@@ -12,10 +12,13 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <title>Hello, world!</title>
+  <title>Morris Photo App</title>
+
+
 </head>
 
 <body>
+
   <header>
     <nav class="navbar navbar-light bg-light">
       <span class="navbar-brand mb-0 h1">MORRIS COSTUMES</span>
@@ -45,22 +48,22 @@
 
       <!-- Test scanner div -->
       <!-- <form>
-            <div class="input-group mb-3">
-                <input id="isbn_input" type="text" class="isbn form-control" placeholder="Tracking Number" aria-label="Tracking Number" aria-describedby="basic-addon">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-info button scan" type="button">Scan</button>
-                </div>
-                <input type="file" id="file" capture/>
-              </div>
-        </form> -->
+                  <div class="input-group mb-3">
+                      <input id="isbn_input" type="text" class="isbn form-control" placeholder="Tracking Number" aria-label="Tracking Number" aria-describedby="basic-addon">
+                      <div class="input-group-append">
+                          <button class="btn btn-outline-info button scan" type="button">Scan</button>
+                      </div>
+                      <input type="file" id="file" capture/>
+                    </div>
+              </form> -->
 
       <!-- <form>
-        <div class="input-field">
-          <input id="isbn_input" class="isbn form-control" type="text" />
-          <button type="button" class="icon-barcode button scan">&nbsp;</button>
-          <input type="file" id="file" capture />
-        </div>
-      </form> -->
+              <div class="input-field">
+                <input id="isbn_input" class="isbn form-control" type="text" />
+                <button type="button" class="icon-barcode button scan">&nbsp;</button>
+                <input type="file" id="file" capture />
+              </div>
+            </form> -->
 
       <!-- Test scanner div end-->
 
@@ -86,7 +89,6 @@
   <footer></footer>
 
 
-  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -99,8 +101,41 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/1.0.0-beta.1/quagga.js"
     integrity="sha256-tZb22+HHPyeR59ZqbnWz8uYzPfATymUf0TGEstTg300=" crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.6.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
 
   <script src="js/main.js"></script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] ===
+          'function');
+        document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script>
 </body>
 
 </html>
